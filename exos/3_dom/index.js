@@ -1,7 +1,5 @@
 'use strict';
 
-// # 4_DOM
-
 /* Exercice 1: Couleurs
     - Créer une <div> pour chaque couleur, avec la couleur en textContent, et l'ajouter à l'élément avec l'id 'exo1'
     - Chaque div doit avoir un fond coloré de sa couleur
@@ -9,6 +7,27 @@
 */
 
 const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
+
+const section1 = document.getElementById('exo1');
+
+function makeColorDiv(color) {
+  const div = document.createElement('div');
+
+  div.textContent = color;
+
+  div.classList.add('color');
+  div.style.background = color;
+
+  div.addEventListener('click', function () {
+    console.log('Color', color);
+  });
+
+  return div;
+}
+
+colors.map(makeColorDiv).forEach(function (div) {
+  section1.append(div);
+});
 
 // -------------------------------
 
@@ -18,6 +37,20 @@ const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
     - Lui ajouter un listener au mousemove, qui change sa hauteur/largeur
     en fonction de la position de la souris à l'écran (event.clientX, event.clientY)
 */
+
+const section2 = document.createElement('section');
+section2.id = 'exo2';
+document.body.append(section2);
+
+const carre = document.createElement('div');
+carre.classList.add('carre');
+
+section2.append(carre);
+
+carre.addEventListener('mousemove', function (event) {
+  carre.style.height = event.clientY * 0.6 + 'px';
+  carre.style.width = event.clientX * 0.6 + 'px';
+});
 
 // -------------------------------
 
@@ -30,6 +63,35 @@ const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
 
 const names = ['Harry', 'Hermione', 'Ron', 'Sirius', 'Hagrid', 'Albus'];
 
+function random(n) {
+  return Math.floor(Math.random() * n);
+}
+
+const section3 = document.createElement('section');
+section3.id = 'exo3';
+document.body.append(section3);
+
+function createPerson(oldP) {
+  const i = !oldP ? 0 : random(names.length);
+  const name = names[i];
+
+  const newPerson = document.createElement('div');
+  newPerson.classList.add('harry');
+  newPerson.textContent = name;
+
+  newPerson.addEventListener('click', function () {
+    createPerson(newPerson);
+  });
+
+  if (!oldP) {
+    section3.append(newPerson);
+  } else {
+    oldP.replaceWith(newPerson);
+  }
+  return newPerson;
+}
+
+createPerson();
 // -------------------------------
 
 /* Exercice 4: Tracking de la souris
@@ -39,7 +101,30 @@ const names = ['Harry', 'Hermione', 'Ron', 'Sirius', 'Hagrid', 'Albus'];
     de la position de la souris dans la fenêtre (event.clientX, event.clientY)
 */
 
-// -------------------------------
+const section4 = document.createElement('section');
+section4.id = 'exo4';
+document.body.append(section4);
+
+const button = document.createElement('button');
+button.textContent = 'Track';
+section4.append(button);
+
+let isTracking = false;
+
+function track(e) {
+  console.log('X', e.clientX, 'Y', e.clientY);
+}
+
+button.addEventListener('click', function () {
+  isTracking = !isTracking;
+  console.log('Coucou', isTracking);
+
+  if (isTracking) {
+    window.addEventListener('mousemove', track);
+  } else {
+    window.removeEventListener('mousemove', track);
+  }
+});
 
 /* Exercice Bonus: Click and drag
     - Créer une <section> avec l'id 'exo5', et l'ajouter au body
@@ -48,3 +133,33 @@ const names = ['Harry', 'Hermione', 'Ron', 'Sirius', 'Hagrid', 'Albus'];
       * quand on clique dessus en laissant enfoncé, la <div> se déplace en fonction des déplacements de la souris
       * lorsqu'on relâche, la <div> ne se déplace plus
 */
+
+const section5 = document.createElement('section');
+section5.id = 'exo5';
+document.body.append(section5);
+
+let deltaX;
+let deltaY;
+
+const drag = document.createElement('div');
+drag.textContent = 'Drag me !';
+drag.classList.add('drag');
+section5.append(drag);
+
+function move(e) {
+  drag.style.left = e.clientX - deltaX + 'px';
+  drag.style.top = e.clientY - deltaY + 'px';
+}
+
+drag.addEventListener('mousedown', function (e) {
+  const pos = drag.getBoundingClientRect();
+  const x = e.clientX;
+  const y = e.clientY;
+  deltaX = x - pos.x;
+  deltaY = y - pos.y;
+  window.addEventListener('mousemove', move);
+});
+
+drag.addEventListener('mouseup', function () {
+  window.removeEventListener('mousemove', move);
+});
