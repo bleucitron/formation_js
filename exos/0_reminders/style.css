@@ -1,3 +1,19 @@
 body {
   padding: 2rem;
 }
+
+.test {
+  position: relative;
+  height: 400px;
+  width: 800px;
+  background: lightblue;
+  padding: 100px;
+}
+
+.carre {
+  position: absolute;
+  color: white;
+  background: blue;
+  width: 1rem;
+  height: 1rem;
+}

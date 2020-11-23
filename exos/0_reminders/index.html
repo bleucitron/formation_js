@@ -6,8 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./style.css" />
 
-    <title>Exercice HTML</title>
+    <title>Ma recette de tartiflette</title>
+    <style>
+      .azerty h2 {
+        font-family: Arial;
+        color: red;
+        background: green;
+        width: 30px;
+        height: 80px;
+        border: 4px solid #65d8fe;
+        margin-top: 4rem;
+        padding-bottom: 2rem;
+      }
+
+      a {
+        color: blue
+      }
+
+      .flex {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
   </head>
 
-  <body></body>
+  <body>
+    <article>
+      <div class='test'>
+        <div class='carre'>
+          CARRE
+        </div>
+      </div>
+      <h1>La tartiflette</h1>
+      <section>
+        <p id='coucou'>Pour 4 personnes</p>
+        <p class='azerty'>Préparation: 20 min</p>
+        <p>Cuisson: 40 min</p>
+      </section>
+      <section class='azerty'>
+        <h2>Ingrédients</h2>
+        <ul>
+          <li>
+            Patates
+          </li>
+          <li>
+            Reblochon
+          </li>
+          <li>
+            Oignons
+          </li>
+          <li>
+            Lardons
+          </li>
+          <li>
+            Vin blanc
+          </li>
+        </ul>
+      </section>
+      <section class='test'>
+        <h2>Recette</h2>
+        <p>Épluchez et <strong>coupez les patates</strong>, puis les mettre à cuire dans de l'eau</p>
+        <p>Coupez les <div>oignons</div> et faites les revenir dans un peu d'huile, puis ajoutez les lardons et le vin blanc</p>
+        <p>Mettez le <i>tout</i> dans un plat au four</p>
+        <p>Disposez le reblochon au dessus du tout</p>
+        <p>Faites cuire</p>
+        <p>Mangez !</p>
+        <div><p>COUCOU</p></div>
+      </section>
+      <div class='flex'>
+        <p>SALUT</p>
+        <p>ROMAIN</p>
+        <p>CA VA ?</p>
+      </div>
+    </article>
+  </body>
 </html>
