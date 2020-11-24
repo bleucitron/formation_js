@@ -9,6 +9,24 @@
 */
 
 const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
+const section = document.getElementById('exo1');
+
+function createDiv(color) {
+  const div = document.createElement('div');
+  div.textContent = color;
+  div.addEventListener('click', function () {
+    console.log('COULEUR', color);
+  });
+  div.classList.add('couleur');
+
+  div.style.backgroundColor = color;
+
+  return div;
+}
+
+colors.map(createDiv).forEach(function (div) {
+  section.append(div);
+});
 
 // -------------------------------
 

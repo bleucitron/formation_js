@@ -12,3 +12,10 @@ section {
   display: flex;
   justify-content: center;
 }
+
+.couleur {
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  color: white;
+}
