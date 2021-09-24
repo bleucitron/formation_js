@@ -6,7 +6,7 @@
     - Créer une <div> pour chaque couleur, avec la class 'color'
     - L'ajouter à l'élément avec l'id 'exo1'
     - Chaque div doit avoir un fond coloré de sa couleur
-    - Chaque div doit afficher en textContent le texte de sa couleur, ainsi que la position de la couleur dans le tableau  (1. Transparent)
+    - Chaque div doit afficher en textContent le texte de sa couleur, ainsi que la position de la couleur dans le tableau  (1. white)
     - Au click, chaque div doit changer la couleur du background du body
 */
 
@@ -21,26 +21,87 @@ const colors = [
   'purple',
 ];
 
+// for (let i = 0; i < colors.length; i++) {
+//   ...
+// }
+
+colors.forEach(function (color, position) {
+  const colorDiv = document.createElement('div');
+  colorDiv.style.backgroundColor = color;
+  colorDiv.classList.add('color');
+  colorDiv.textContent = position + 1 + '. ' + color;
+
+  const exo1 = document.getElementById('exo1');
+  exo1.append(colorDiv);
+
+  colorDiv.addEventListener('click', function () {
+    document.body.style.backgroundColor = color;
+  });
+});
+
 // -------------------------------
 
 /* Exercice 2: Taille
     - Créer une <section> avec l'id 'exo2', et l'ajouter au body
-    - Créer une <div> carrée, de couleur noire, et l'ajouter à la 2e section
-    - Lui ajouter un listener au mousemove, qui change sa hauteur/largeur
-    en fonction de la position de la souris à l'écran (event.clientX, event.clientY)
+    - Créer une <div> carrée, avec une largeur/hauteur de 200px
+    de couleur noire, et l'ajouter à la 2e section
+    - Lui ajouter un listener au mousemove, qui change sa largeur
+    en fonction de la position de la souris à l'écran (event.clientX)
 */
+
+const sectionExo2 = document.createElement('section');
+sectionExo2.id = 'exo2';
+document.body.append(sectionExo2);
+
+const divCarre = document.createElement('div');
+sectionExo2.append(divCarre);
+
+divCarre.style.backgroundColor = 'black';
+divCarre.style.width = '200px';
+divCarre.style.height = '200px';
+
+divCarre.addEventListener('mousemove', function (evenement) {
+  divCarre.style.width = evenement.clientX + 'px';
+});
 
 // -------------------------------
 
 /* Exercice 3: Timer
     - Créer une <section> avec l'id 'exo3', et l'ajouter au body
-    - Ajouter deux divs: une avec la classe 'nb', et l'autre avec la classe 'dots'
+    - Ajouter deux divs en enfant de 'exo3': une avec la classe 'nb', et l'autre avec la classe 'dots'
     - Pour chaque seconde écoulée depuis le chargement de la page,
-      - afficher le nombre de points dans '.nb'
       - afficher une div avec la classe 'dot' à l'élément '.dots'
+      - afficher le nombre de divs dans '.dot' dans '.nb'
     - Stocker dans le localstorage l'info du nb de points
     pour recharger la page avec le bon nombre de points dès le début
 */
+
+const sectionExo3 = document.createElement('section');
+sectionExo3.id = 'exo3';
+document.body.append(sectionExo3);
+
+const nbDiv = document.createElement('div');
+nbDiv.classList.add('nb');
+const dotsDiv = document.createElement('div');
+dotsDiv.classList.add('dots');
+
+sectionExo3.append(nbDiv);
+sectionExo3.append(dotsDiv);
+
+let nbPoints = parseInt(localStorage.getItem('nbPoints')); // transformer une string en nb
+nbDiv.textContent = nbPoints;
+
+setInterval(function () {
+  const dotDiv = document.createElement('div');
+  dotDiv.classList.add('dot');
+
+  dotsDiv.append(dotDiv);
+
+  nbPoints = nbPoints + 1;
+  localStorage.setItem('nbPoints', nbPoints);
+
+  nbDiv.textContent = nbPoints;
+}, 1000);
 
 // -------------------------------
 
