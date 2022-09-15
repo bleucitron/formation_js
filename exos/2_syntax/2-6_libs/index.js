@@ -17,6 +17,15 @@ console.log('*** Aléatoire ***');
  * 2) Utiliser cette fonction pour obtenir un nombre aléatoire entre 1 et 6
  */
 
+function lanceDes(min, max) {
+  const n = min + Math.random() * max;
+  const entier = Math.floor(n);
+
+  return entier;
+}
+
+console.log(lanceDes(2, 54));
+
 /**
  * 3) Modifier la fonction "lanceDés" pour pouvoir choisir la taille du dé (limites inférieures et supérieures)
  */
@@ -29,12 +38,22 @@ console.log('*** Noms ***');
 /**
  * 1) Ajoutez 2 ou 3 personnes au tableaux "personnes", en utilisant .push()
  */
+
 const personnes = [{ nom: 'Romain', date: '1985-12-31' }];
+personnes.push(
+  { nom: 'Paul', date: '2020-02-10' },
+  { nom: 'Sophie', date: '1995-01-30' },
+);
 
 /**
  * 2) Créez un nouveau tableau contenant uniquement les noms des personnes en minuscules,
  * en utilisant .map() et .toLowercase()
  */
+
+const noms = personnes.map(function (p) {
+  return p.nom.toLowerCase();
+});
+console.log('Noms', noms);
 
 /**
  * 3) Créez un nouveau tableau contenant uniquement les dates d'anniversaires en format "Humain",
@@ -50,15 +69,21 @@ const dateFormatOptions = {
   day: 'numeric',
 };
 
+const dates = personnes.map(function (p) {
+  const date = new Date(p.date);
+  return date.toLocaleDateString('fr', dateFormatOptions);
+});
+console.log('dates', dates);
+
 /**
- * 3) Créer une fonction "calculerAge" qui en entrée prend un string représentant la date de naissance
+ * 4) Créer une fonction "calculerAge" qui en entrée prend un string représentant la date de naissance
  * et renvoie l'âge en années
  * - un âge est une simple durée, soit la différence entre 2 dates.
  * - commencez par calculer l'âge en millisecondes
  */
 
 /**
- * 4) À partir de "personnes" et "calculerAge", créer un nouveau tableau contenant seulement les âges.
+ * 5) À partir de "personnes" et "calculerAge", créer un nouveau tableau contenant seulement les âges.
  */
 
 /**========================================================================

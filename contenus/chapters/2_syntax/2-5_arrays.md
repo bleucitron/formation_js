@@ -62,10 +62,12 @@ const b = array.shift(); // b vaut 1, et array vaut [2]
 Il est possible de trier un tableau.
 
 ```js
-const array = [10, 3, 6, 2];
+const array = [7, 3, 6, 2];
 
-array.sort(); // [2, 3, 6, 10]
+array.sort(); // [2, 3, 6, 7]
 ```
+
+> Attention, `.sort()` ne trie pas toujours comme on l'imagine.
 
 Dans tous les cas, que l'on ajoute ou supprime une valeur d'un tableau, la position du tableau dans l'univers n'a pas changé, même si son "contenu" a changé.
 
