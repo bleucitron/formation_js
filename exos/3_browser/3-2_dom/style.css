@@ -14,6 +14,7 @@ h1, h2 {
   height: 1rem;
   border-radius: 50%;
   background-color: lightgrey;
+  z-index: -1;
 }
 
 .red {
@@ -22,6 +23,10 @@ h1, h2 {
 
 .blue {
   background: blue;
+}
+
+.texteBleu {
+  color: blue;
 }
 
 .inutile {
@@ -37,7 +42,7 @@ h1, h2 {
 }
 
 section {
-  border: 1px solid grey;
+  border: 3px solid orange;
   height: 20rem;
   margin: 1rem;
 }

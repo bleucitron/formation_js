@@ -46,7 +46,7 @@ personnes.push(
 );
 
 /**
- * 2) Créez un nouveau tableau contenant uniquement les noms des personnes en minuscules,
+ * 2) Créez un nouveau tableau contenant les noms des personnes, passés en minuscules,
  * en utilisant .map() et .toLowercase()
  */
 
@@ -82,9 +82,28 @@ console.log('dates', dates);
  * - commencez par calculer l'âge en millisecondes
  */
 
+function calculerAge(dateDeNaissance) {
+  const auj = new Date();
+  const naissance = new Date(dateDeNaissance);
+
+  const difference = auj - naissance; // age en ms
+
+  const ageEnAnnee = difference / 1000 / 60 / 60 / 24 / 365;
+
+  return ageEnAnnee;
+}
+
+console.log(calculerAge('1987-01-12'));
+
 /**
  * 5) À partir de "personnes" et "calculerAge", créer un nouveau tableau contenant seulement les âges.
  */
+
+const ages = personnes.map(function (p) {
+  return calculerAge(p.date);
+});
+
+console.log('ages', ages);
 
 /**========================================================================
  *                           [Bonus] Say Hello
@@ -103,10 +122,48 @@ const languages = ['fr', 'es', 'de', 'it', 'jp'];
  * 3) Tester les fonctions créées
  */
 
+function prepareHello(lang) {
+  if (lang === 'fr') {
+    return function (name) {
+      return 'Bonjour ' + name;
+    };
+  } else if (lang === 'de') {
+    return function (name) {
+      return 'Hallo ' + name;
+    };
+  } else if (lang === 'it') {
+    return function (name) {
+      return 'Ciao ' + name;
+    };
+  } else if (lang === 'es') {
+    return function (name) {
+      return 'Hola ' + name;
+    };
+  } else {
+    return function (name) {
+      return 'Hello ' + name;
+    };
+  }
+}
+
+const bjrFr = prepareHello('fr');
+const bjrDe = prepareHello('de');
+const bjrIt = prepareHello('it');
+const bjrEs = prepareHello('es');
+const bjrEn = prepareHello('en');
+
+console.log(bjrFr('Romain'));
+console.log(bjrDe('Romain'));
+console.log(bjrIt('Romain'));
+console.log(bjrEs('Romain'));
+console.log(bjrEn('Romain'));
+
 /**========================================================================
  *                           [Bonus] Mot de passe
  *========================================================================**/
 console.log('*** [BONUS] Mot de passe ***');
+
+const letters = 'abcdefghijklmnopqrstuvwxyz';
 
 /**
  * 1) En utilisant la fonction "lanceDés", créez une fonction `getLetter`
@@ -114,7 +171,12 @@ console.log('*** [BONUS] Mot de passe ***');
  * Vous pouvez utiliser la string "letters".
  */
 
-const letters = 'abcdefghijklmnopqrstuvwxyz';
+function getLetter() {
+  const position = lanceDes(0, letters.length);
+  return letters[position];
+}
+
+console.log('Lettre au hasard', getLetter());
 
 /**
  * 2) Créez une fonction "makePassword" qui:
@@ -124,6 +186,19 @@ const letters = 'abcdefghijklmnopqrstuvwxyz';
  * Utiliser une boucle for et la fonction "getLetter".
  */
 
+function makePassword(size) {
+  let password = '';
+
+  for (let i = 0; i < size; i++) {
+    const letter = getLetter();
+    password += letter;
+  }
+
+  return password;
+}
+
+console.log('Mot de passe créé', makePassword(8));
+
 /**
  * 3) Créer une fonction 'makeStrongerPassword' qui:
  * - en entrée prend un nombre 'size' et un booléen 'withNumbers'
@@ -132,3 +207,27 @@ const letters = 'abcdefghijklmnopqrstuvwxyz';
  * Si 'withNumber' est vrai, faire en sorte qu'un caractère sur deux soit un nombre au hasard.
  * Si 'size' est plus petit que 8, logguer un message d'avertissement, mais créer le password quand même.
  */
+
+function makeStrongerPassword(size, withNumber) {
+  let password = '';
+
+  if (size < 8) {
+    console.log('Attention, mot de passe faible');
+  }
+
+  for (let i = 0; i < size; i++) {
+    if (withNumber === true && i % 2 === 1) {
+      const number = lanceDes(0, 10);
+      password += number;
+    } else {
+      const letter = getLetter();
+      password += letter;
+    }
+  }
+
+  return password;
+}
+
+console.log('Mot de passe faible', makeStrongerPassword(3));
+console.log('Mot de passe fort sans nombres', makeStrongerPassword(8, false));
+console.log('Mot de passe fort avec nombres', makeStrongerPassword(10, true));

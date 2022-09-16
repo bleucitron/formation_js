@@ -26,6 +26,23 @@ const colors = [
   'purple',
 ];
 
+const section = document.getElementById('exo1');
+
+for (let i = 0; i < colors.length; i++) {
+  const color = colors[i];
+  const div = document.createElement('div');
+
+  div.classList.add('color');
+  div.textContent = i + 1 + '. ' + color;
+  div.style.background = color;
+
+  section.append(div);
+
+  div.addEventListener('click', function () {
+    document.body.style.background = color;
+  });
+}
+
 /**========================================================================
  *                           Taille
  *========================================================================**/
@@ -38,10 +55,36 @@ console.log('*** Taille ***');
  * en fonction de la position en Y de la souris à l'écran (event.clientY)
  */
 
+const section2 = document.createElement('section');
+section2.id = 'exo2';
+document.body.append(section2);
+
+const carre = document.createElement('div');
+carre.classList.add('carre');
+section2.append(carre);
+
+carre.addEventListener('mousemove', function (event) {
+  carre.style.width = event.clientY + 'px';
+});
+
 /**========================================================================
  *                           Clavier
  *========================================================================**/
 console.log('*** Clavier ***');
+
+document.body.addEventListener('keydown', function (event) {
+  const position = event.key - 1;
+
+  const color = colors[position];
+
+  if (event.key === 'w') {
+    console.log('WWWWWWW');
+  }
+
+  if (color !== undefined) {
+    document.body.style.background = color;
+  }
+});
 
 /**
  * 1) Faire en sorte de changer la couleur du background du body quand on appuie sur 1, 2, 3...

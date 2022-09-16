@@ -36,6 +36,12 @@ section {
   border-radius: 50%;
 }
 
+.carre {
+  width: 80px;
+  height: 80px;
+  background: black;
+}
+
 .character {
   width: 10rem;
   height: 12rem;
