@@ -7,9 +7,12 @@ console.log('Exos 3-2: DOM');
 console.log('*** Chirurgie ***');
 
 /**
- * 1) Comptez les éléments de type 'i'
- * 2) Supprimez les éléments avec la classe 'inutile'
- * 3) Changez le texte et la couleur de l'élément avec l'id 'main'
+ * 1) Changez le texte et la couleur du background de l'élément avec l'id 'main'
+ * 2) Comptez les éléments de type 'i'
+ * 3) Comptez les 'i' gris, bleus, et rouge
+ * 4) Supprimez les éléments avec la classe 'inutile', ainsi que les i bleus et rouge
+ * 5) Créez 15 éléments de type 'div', avec la classe 'numero'.
+ * Ajoutez en textContent de ces éléments leur numero (entre 1 et 15) et ajoutez les à la 2e section
  */
 
 /**========================================================================
@@ -18,5 +21,6 @@ console.log('*** Chirurgie ***');
 console.log('*** Article ***');
 
 /**
- * 1) Reproduire programmatiquement l'élément d'article
+ * 1) Déplacer l'article dans la 1ère section
+ * 2) Reproduire programmatiquement l'élément d'article, et l'ajouter à la 2e section
  */

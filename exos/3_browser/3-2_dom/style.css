@@ -1,61 +1,68 @@
-section {
-  background: lightgrey;
-  /* width: 100%; */
-  min-height: 2rem;
-  margin: 1rem 0;
-  padding: 1rem;
+body {
   display: flex;
-  gap: 0.5rem;
-  justify-content: center;
+  flex-flow: column;
 }
 
-#exo1 {
-  align-items: center;
-  overflow-y: auto;
-}
-
-.color {
-  padding: 1rem;
-  border: 1px solid black;
-}
-
-.dots {
-  display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  margin: 0 0.5rem;
-  height: 1rem;
-  width: 100%;
-  overflow-y: auto;
+h1, h2 {
+  position: relative;
+  z-index: 2;
 }
 
 .dot {
-  flex: 0 0 0.5rem;
-  height: 0.5rem;
-  background: white;
+  position: fixed;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
+  background-color: lightgrey;
 }
 
-.character {
-  width: 10rem;
-  height: 12rem;
-  margin: 2rem;
-  border: 1px solid black;
-  border-radius: 1rem 1rem 50% 50%;
-  overflow: hidden;
-  cursor: pointer;
+.red {
+  background: red;
 }
 
-.character:hover {
-  box-shadow: 0 0 15px 2px black;
+.blue {
+  background: blue;
 }
 
-.character .name {
-  text-align: center;
-  margin: 0.5rem 0;
+.inutile {
+  position: fixed;
+  width: 5rem;
+  height: 2rem;
+  background-color: black;
 }
 
-.character img {
-  object-fit: contain;
-  width: 100%;
+#coucou {
+  margin: auto;
+  font-size: 2rem;
+}
+
+section {
+  border: 1px solid grey;
+  height: 20rem;
+  margin: 1rem;
+}
+
+article {
+  margin: auto;
+  width: 20rem;
+  padding: 0.5rem;
+  box-shadow: 1px 5px 10px 1px grey;
+}
+
+article h3 {
+  font-size: 1.3rem;
+  margin-block: 0.5rem;
+}
+
+article p {
+  font-size: 0.9rem;
+}
+
+article .content {
+  min-height: 4rem;
+}
+
+article footer .author, article footer .date {
+  text-align: right;
+  font-size: 0.8rem;
 }
