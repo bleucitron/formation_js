@@ -1,23 +1,41 @@
 // ### Projet Touitter ###
 
-/* [0] récupérer la donnée de tweets à cette url: https://raw.githubusercontent.com/bleucitron/data/master/data/tweets.json
-    Observer la structure de donnée des tweets dans la console de votre navigateur.
-*/
+const button = document.createElement('button');
+button.textContent = 'click';
 
-// [1] créer et ajouter un <button> "bouton" qui quand on clique dessus affiche 'click' dans la console.
-// Ne pas oublier de donner un textContent au bouton
+document.body.append(button);
 
-// [2] créer une fonction, qui pour un tweet en entrée, crée et retourne un <li> contenant le texte du tweet
+let isFr = false;
 
-// [3] créer et ajouter un <ol> à la page, puis y ajouter les <li> de tweets en utilisant [2]
+async function main() {
+  const tweets = await getTweets();
 
-// [4] créer une fonction checkFr qui pour un tweet en entrée renvoie vrai ou faux selon si la langue est 'fr'
+  let ol = createOl(tweets);
+  document.body.append(ol);
 
-// [5] modifier "bouton", et utiliser checkFr au clic du bouton pour afficher dans la console la liste des tweets français
+  button.addEventListener('click', function () {
+    isFr = !isFr;
 
-// [6] modifier "bouton" pour que quand on clique dessus,
-//  - crée un nouveau <ol> avec seulement les tweets français
-//  - remplace le <ol> existant avec le nouvel <ol>, en utilisant .replaceWith()
+    let newTweets;
+    if (isFr) {
+      const tweetsFr = [];
+      for (let tweet of tweets) {
+        if (checkFr(tweet)) {
+          tweetsFr.push(tweet);
+        }
+      }
+      newTweets = tweetsFr;
+    } else {
+      newTweets = tweets;
+    }
+
+    const newOl = createOl(newTweets);
+    ol.replaceWith(newOl);
+    ol = newOl;
+  });
+}
+
+main();
 
 // [7] créer une variable booléenne isFr, et l'initialiser à false
 
@@ -27,9 +45,6 @@
 //  Il faut utiliser isFr.
 
 // [10] changer l'intitulé de "bouton" de filtre en fonction de isFr
-
-/* [11] créer une fonction, qui pour un tableau tweets en entrée, crée et retourne un <ol> rempli de <li>
-    et l'utiliser à [3], [6], [9] */
 
 /**
  * [12] ajoutez un bouton pour récupérer de la donnée supplémentaire à cette URL https://raw.githubusercontent.com/bleucitron/data/master/data/tweets2.json

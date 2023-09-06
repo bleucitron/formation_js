@@ -7,28 +7,42 @@ console.log('Exos 3-4: Formulaires');
 console.log('*** Couleurs ***');
 
 const form = document.getElementById('info');
+const section = document.querySelector('section');
+
+function createID(data) {
+  const article = document.createElement('article');
+  const nomP = document.createElement('p');
+  const ageP = document.createElement('p');
+
+  nomP.textContent = data.name;
+  if (data.age !== '') {
+    ageP.textContent = data.age + ' ans';
+  }
+
+  article.append(nomP);
+  article.append(ageP);
+  article.style.background = data.color;
+
+  article.addEventListener('click', function () {
+    article.remove();
+  });
+
+  return article;
+}
 
 form.addEventListener('submit', e => {
   e.preventDefault(); // permet d'éviter de le rechargement de la page
   const data = [...new FormData(form)]; // lit le contenu du formulaire
 
-  const person = {}; // formattage de la donnée
+  const formatted = {}; // formattage de la donnée
   data.forEach(([key, value]) => {
-    person[key] = value;
+    formatted[key] = value;
   });
 
-  console.log(person);
-  const name = document.createElement('div');
-  const age = document.createElement('div');
-  const article = document.createElement('article');
-  name.textContent = person.name;
-  age.textContent = person.age + ' ans';
-  article.append(name, age);
-  article.style.background = person.color;
+  console.log(formatted);
 
-  article.addEventListener('click', () => article.remove());
-
-  document.body.append(article);
+  const carte = createID(formatted);
+  section.append(carte);
 });
 
 /**

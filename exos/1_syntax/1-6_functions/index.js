@@ -14,6 +14,12 @@ console.log('*** Bonjour ***');
  * 2) Utiliser cette fonction avec votre prénom en logguant son résultat
  */
 
+function direBonjour(name) {
+  return 'Bonjour ' + name + ' !';
+}
+
+console.log(direBonjour('Romain'));
+
 /**========================================================================
  *                           Somme
  *========================================================================**/
@@ -26,6 +32,12 @@ console.log('*** Somme ***');
  *
  * 2) Utiliser cette fonction sur deux nombres de votre choix
  */
+
+function somme(a, b) {
+  return a + b;
+}
+
+console.log(somme(123, 4));
 
 /**========================================================================
  *                           Pourcentage
@@ -41,9 +53,21 @@ console.log('*** Pourcentage ***');
  * et afficher son résultat dans la console
  */
 
+function calculer(n) {
+  return n * 1.13;
+}
+
+console.log(calculer(100));
+
 /**
  * 3) Modifier la fonction "calculer" pour pouvoir choisir également le pourcentage appliqué
  */
+
+function calculer2(nombre, pourcentage) {
+  return nombre * (1 + pourcentage / 100);
+}
+
+console.log(calculer2(100, 24));
 
 /**========================================================================
  *                           [Bonus] Limite

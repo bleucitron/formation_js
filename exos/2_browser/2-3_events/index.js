@@ -7,12 +7,12 @@ console.log('Exos 2-3: Évènements');
 console.log('*** Couleurs ***');
 
 /**
- * 1) Créez une <div> pour chaque couleur, avec la class 'color'
+ * 1) Créez une <button> pour chaque couleur, avec la class 'color'
  * 2) L'ajouter à l'élément de la page qui a l'id 'exo1'
- * 3) Chaque div doit avoir un fond coloré de sa couleur
- * 4) Chaque div doit afficher en textContent le texte de sa couleur,
+ * 3) Chaque button doit avoir un fond coloré de sa couleur
+ * 4) Chaque button doit afficher en textContent le texte de sa couleur,
  * ainsi que la position de la couleur dans le tableau  (1. white)
- * 5) Au click, chaque div doit changer la couleur du background du body
+ * 5) Au click, chaque button doit changer la couleur du background du body
  */
 
 const colors = [
@@ -26,6 +26,19 @@ const colors = [
   'purple',
 ];
 
+const exo1 = document.getElementById('exo1');
+
+for (let position = 0; position < colors.length; position++) {
+  const color = colors[position];
+
+  const button = document.createElement('button');
+  button.classList.add('color');
+  button.textContent = `${position + 1}. ${color}`;
+  button.style.background = color;
+
+  exo1.append(button);
+}
+
 /**========================================================================
  *                           Taille
  *========================================================================**/
@@ -37,6 +50,18 @@ console.log('*** Taille ***');
  * 3) Lui ajouter un listener au mousemove, qui change sa largeur
  * en fonction de la position en Y de la souris à l'écran (event.clientY)
  */
+
+const section2 = document.createElement('section');
+section2.id = 'exo2';
+const square = document.createElement('div');
+square.classList.add('square');
+
+section2.append(square);
+document.body.append(section2);
+
+square.addEventListener('mousemove', function (event) {
+  square.style.width = event.clientY + 'px';
+});
 
 /**========================================================================
  *                           Clavier

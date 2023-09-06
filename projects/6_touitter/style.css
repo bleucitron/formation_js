@@ -1,0 +1,21 @@
+.tweet {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.fr {
+  background: lightblue;
+}
+
+.text {
+  font-size: 1.2rem;
+}
+
+.author {
+  font-weight: bold;
+}
+
+.date {
+  color: grey;
+  font-style: italic;
+}

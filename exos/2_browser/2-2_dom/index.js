@@ -6,6 +6,10 @@ console.log('Exos 2-2: DOM');
  *========================================================================**/
 console.log('*** Chirurgie ***');
 
+for (const e of document.querySelectorAll('.rouge')) {
+  e.remove();
+}
+
 /**
  * 1) Changez le texte et la couleur du background de l'élément avec l'id 'main'
  * 2) Comptez les éléments de type 'i'

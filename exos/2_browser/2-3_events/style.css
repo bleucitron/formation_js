@@ -7,6 +7,12 @@ section {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
+
+
+.square {
+  width: 100px;
+  height: 100px;
+  background: black;
 }
 
 #exo1 {
